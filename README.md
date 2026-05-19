@@ -102,13 +102,13 @@ office-web/
 
 MIT License
 
-Copyright (c) 2026 Bezuglov Sergey
+Copyright (c) 2026 Безуглов Сергей
 
 ---
 
 ## 👤 Автор
 
-**Bezuglov Sergey**
+**Безуглов Сергей**
 
 - GitHub: [@BesuglovS](https://github.com/BesuglovS)
 - Repository: [https://github.com/BesuglovS/office-web](https://github.com/BesuglovS/office-web)
