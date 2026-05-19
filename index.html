@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Изучение офисных приложений — Текстовые редакторы, Таблицы, Презентации
+    </title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(
+          135deg,
+          #0f0c29 0%,
+          #302b63 50%,
+          #24243e 100%
+        );
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        text-align: center;
+        color: white;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        font-size: 2.2rem;
+      }
+
+      .subtitle {
+        text-align: center;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+        line-height: 1.6;
+      }
+
+      .intro-section {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .intro-section h2 {
+        color: #333;
+        margin-bottom: 15px;
+        font-size: 1.4rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .intro-section p {
+        color: #555;
+        line-height: 1.8;
+        margin-bottom: 12px;
+      }
+
+      .intro-section ul {
+        margin: 10px 0 15px 25px;
+        color: #555;
+        line-height: 1.8;
+      }
+
+      .intro-section li {
+        margin-bottom: 8px;
+      }
+
+      .apps-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        margin: 30px 0;
+      }
+
+      .app-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        padding: 30px;
+        text-decoration: none;
+        color: inherit;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .app-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .app-card .icon {
+        font-size: 3.5rem;
+        margin-bottom: 15px;
+      }
+
+      .app-card h3 {
+        color: #333;
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+      }
+
+      .app-card p {
+        color: #666;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 15px;
+      }
+
+      .app-card .action-link {
+        display: inline-block;
+        padding: 10px 24px;
+        border-radius: 25px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: filter 0.2s;
+      }
+
+      .app-card .action-link:hover {
+        filter: brightness(1.1);
+      }
+
+      .app-card.word .action-link {
+        background: linear-gradient(135deg, #2b5876, #4e4376);
+        color: white;
+      }
+
+      .app-card.excel .action-link {
+        background: linear-gradient(135deg, #11998e, #38ef7d);
+        color: white;
+      }
+
+      .app-card.powerpoint .action-link {
+        background: linear-gradient(135deg, #c0392b, #8e44ad);
+        color: white;
+      }
+
+      .app-card.word {
+        border-top: 4px solid #2b5876;
+      }
+
+      .app-card.excel {
+        border-top: 4px solid #11998e;
+      }
+
+      .app-card.powerpoint {
+        border-top: 4px solid #c0392b;
+      }
+
+      .quick-nav {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        z-index: 100;
+      }
+
+      .quick-nav-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: none;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: transform 0.3s;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .quick-nav-btn:hover {
+        transform: scale(1.1);
+      }
+
+      .quick-nav-btn.top {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+      }
+
+      @media (max-width: 600px) {
+        h1 {
+          font-size: 1.6rem;
+        }
+
+        .subtitle {
+          font-size: 1rem;
+        }
+
+        .intro-section {
+          padding: 20px;
+        }
+
+        .apps-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .app-card {
+          padding: 20px;
+        }
+
+        .app-card .icon {
+          font-size: 2.8rem;
+        }
+      }
+    </style>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+      (function (m, e, t, r, i, k, a) {
+        m[i] =
+          m[i] ||
+          function () {
+            (m[i].a = m[i].a || []).push(arguments);
+          };
+        m[i].l = 1 * new Date();
+        for (var j = 0; j < document.scripts.length; j++) {
+          if (document.scripts[j].src === r) {
+            return;
+          }
+        }
+        ((k = e.createElement(t)),
+          (a = e.getElementsByTagName(t)[0]),
+          (k.async = 1),
+          (k.src = r),
+          a.parentNode.insertBefore(k, a));
+      })(
+        window,
+        document,
+        "script",
+        "https://mc.yandex.ru/metrika/tag.js?id=107219928",
+        "ym",
+      );
+
+      ym(107219928, "init", {
+        ssr: true,
+        webvisor: true,
+        clickmap: true,
+        ecommerce: "dataLayer",
+        referrer: document.referrer,
+        url: location.href,
+        accurateTrackBounce: true,
+        trackLinks: true,
+      });
+    </script>
+    <noscript
+      ><div>
+        <img
+          src="https://mc.yandex.ru/watch/107219928"
+          style="position: absolute; left: -9999px"
+          alt=""
+        /></div
+    ></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+  <body>
+    <div class="container">
+      <h1>📚 Изучение офисных приложений</h1>
+      <p class="subtitle">
+        Учебные материалы по текстовым редакторам, электронным таблицам и
+        программам для презентаций.<br />
+        На примере Microsoft Office и LibreOffice для подготовки к экзаменам и
+        повседневной работы
+      </p>
+
+      <div class="apps-grid">
+        <a href="word/index.html" class="app-card word">
+          <div class="icon">📝</div>
+          <h3>Текстовые редакторы</h3>
+          <p>
+            Программы для создания и форматирования документов. На примере
+            Microsoft Word и LibreOffice Writer. Изучите работу с текстом,
+            таблицами, изображениями и стилями.
+          </p>
+          <span class="action-link">Перейти к материалам →</span>
+        </a>
+
+        <a href="excel/index.html" class="app-card excel">
+          <div class="icon">📊</div>
+          <h3>Электронные таблицы</h3>
+          <p>
+            Программы для вычислений и анализа данных. На примере Microsoft
+            Excel и LibreOffice Calc. Изучите формулы, функции, адресацию ячеек
+            и решение задач.
+          </p>
+          <span class="action-link">Перейти к материалам →</span>
+        </a>
+
+        <a href="powerpoint/index.html" class="app-card powerpoint">
+          <div class="icon">📽️</div>
+          <h3>Редакторы презентаций</h3>
+          <p>
+            Программы для создания слайд-шоу и визуальных материалов. На примере
+            Microsoft PowerPoint и LibreOffice Impress. Узнайте, как создавать
+            слайды, добавлять анимацию и проводить демонстрации.
+          </p>
+          <span class="action-link">Перейти к материалам →</span>
+        </a>
+      </div>
+
+      <div class="intro-section">
+        <h2>🎯 Зачем изучать офисные приложения?</h2>
+        <ul>
+          <li>
+            <strong>Подготовка к экзаменам</strong> — задания по электронным
+            таблицам и текстовым редакторам входят в ЕГЭ по информатике
+          </li>
+          <li>
+            <strong>Учёба</strong> — рефераты, курсовые, дипломные работы,
+            презентации проектов
+          </li>
+          <li>
+            <strong>Работа</strong> — большинство офисных должностей требуют
+            уверенного владения офисными программами
+          </li>
+          <li>
+            <strong>Повседневная жизнь</strong> — создание списков, таблиц,
+            буклетов и других документов
+          </li>
+          <li>
+            <strong>Развитие навыков</strong> — работа с офисными программами
+            развивает логическое мышление и системный подход
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Быстрая навигация -->
+    <div class="quick-nav">
+      <button class="quick-nav-btn top" onclick="scrollToTop()" title="Наверх">
+        ↑
+      </button>
+    </div>
+
+    <script>
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    </script>
+  </body>
+</html>
