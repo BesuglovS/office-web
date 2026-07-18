@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /office-web/
+Sitemap: https://nayanovaacademy.ru/office-web/sitemap.xml

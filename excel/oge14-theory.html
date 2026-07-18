@@ -4,338 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Важные аспекты — Электронные таблицы | Изучение офисных приложений</title>
-    <style>
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        min-height: 100vh;
-        padding: 20px;
-      }
-
-      .container {
-        max-width: 1000px;
-        margin: 0 auto;
-      }
-
-      h1 {
-        text-align: center;
-        color: white;
-        margin-bottom: 20px;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        font-size: 2rem;
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 15px;
-        margin-bottom: 25px;
-        flex-wrap: wrap;
-      }
-
-      .back-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background: rgba(255, 255, 255, 0.2);
-        color: white;
-        text-decoration: none;
-        padding: 12px 20px;
-        border-radius: 25px;
-        transition: background 0.3s;
-        font-weight: 500;
-      }
-
-      .back-link:hover {
-        background: rgba(255, 255, 255, 0.3);
-      }
-
-      .theory-section {
-        background: rgba(255, 255, 255, 0.95);
-        border-radius: 15px;
-        padding: 25px;
-        margin-bottom: 25px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      }
-
-      .theory-section h2 {
-        color: #333;
-        margin-bottom: 15px;
-        font-size: 1.4rem;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .theory-section h3 {
-        color: #444;
-        margin: 20px 0 10px 0;
-        font-size: 1.2rem;
-      }
-
-      .theory-section h4 {
-        color: #555;
-        margin: 15px 0 8px 0;
-        font-size: 1.05rem;
-      }
-
-      .theory-section p {
-        color: #555;
-        line-height: 1.8;
-        margin-bottom: 12px;
-      }
-
-      .theory-section ul,
-      .theory-section ol {
-        margin: 10px 0 15px 25px;
-        color: #555;
-        line-height: 1.8;
-      }
-
-      .theory-section li {
-        margin-bottom: 8px;
-      }
-
-      .theory-section table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 15px 0;
-      }
-
-      .theory-section table th {
-        background: linear-gradient(145deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        padding: 12px;
-        text-align: center;
-        font-weight: 600;
-      }
-
-      .theory-section table td {
-        padding: 10px 12px;
-        border: 1px solid #ddd;
-        color: #555;
-        vertical-align: top;
-      }
-
-      .theory-section table tr:nth-child(even) {
-        background: #f5f7fa;
-      }
-
-      .example-box {
-        background: #e8f5e9;
-        border-radius: 12px;
-        padding: 20px;
-        margin: 15px 0;
-        border-left: 4px solid #4caf50;
-      }
-
-      .example-box h4 {
-        color: #2e7d32;
-        margin-bottom: 10px;
-        font-size: 1.05rem;
-      }
-
-      .example-box p,
-      .example-box li {
-        color: #333;
-      }
-
-      .tip-box {
-        background: #e3f2fd;
-        border-radius: 12px;
-        padding: 20px;
-        margin: 15px 0;
-        border-left: 4px solid #2196f3;
-      }
-
-      .tip-box h4 {
-        color: #1565c0;
-        margin-bottom: 10px;
-      }
-
-      .warning-box {
-        background: #fff3e0;
-        border-radius: 12px;
-        padding: 20px;
-        margin: 15px 0;
-        border-left: 4px solid #ff9800;
-      }
-
-      .warning-box h4 {
-        color: #e65100;
-        margin-bottom: 10px;
-      }
-
-      .error-box {
-        background: #fce4ec;
-        border-radius: 12px;
-        padding: 20px;
-        margin: 15px 0;
-        border-left: 4px solid #e53935;
-      }
-
-      .error-box h4 {
-        color: #c62828;
-        margin-bottom: 10px;
-      }
-
-      .checklist-item {
-        display: flex;
-        align-items: flex-start;
-        gap: 12px;
-        padding: 12px 15px;
-        margin: 8px 0;
-        background: #f5f7fa;
-        border-radius: 10px;
-        border-left: 4px solid #667eea;
-      }
-
-      .checklist-item .check-icon {
-        font-size: 1.3rem;
-        flex-shrink: 0;
-        margin-top: 2px;
-      }
-
-      .checklist-item .check-text {
-        color: #444;
-        line-height: 1.6;
-      }
-
-      .checklist-item .check-text strong {
-        color: #667eea;
-      }
-
-      .quick-nav {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        z-index: 100;
-      }
-
-      .quick-nav-btn {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        border: none;
-        font-size: 1.2rem;
-        cursor: pointer;
-        transition: transform 0.3s;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      }
-
-      .quick-nav-btn:hover {
-        transform: scale(1.1);
-      }
-
-      .quick-nav-btn.top {
-        background: linear-gradient(145deg, #667eea 0%, #764ba2 100%);
-        color: white;
-      }
-
-      .time-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 15px;
-        margin: 20px 0;
-      }
-
-      .time-card {
-        background: linear-gradient(145deg, #f5f7fa 0%, #e4e8eb 100%);
-        border-radius: 12px;
-        padding: 20px;
-        border-top: 4px solid #667eea;
-        text-align: center;
-      }
-
-      .time-card .minutes {
-        font-size: 2rem;
-        font-weight: 700;
-        color: #667eea;
-        display: block;
-      }
-
-      .time-card .label {
-        color: #666;
-        font-size: 0.95rem;
-        margin-top: 5px;
-      }
-
-      .secret-card {
-        background: linear-gradient(145deg, #f1f8e9 0%, #dcedc8 100%);
-        border-radius: 12px;
-        padding: 20px;
-        margin: 10px 0;
-        border-left: 4px solid #8bc34a;
-      }
-
-      .secret-card h4 {
-        color: #33691e;
-        margin-bottom: 8px;
-      }
-
-      .secret-card p {
-        color: #444;
-        margin: 0;
-      }
-
-      .criteria-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
-        margin: 20px 0;
-      }
-
-      .criteria-card {
-        background: linear-gradient(145deg, #f5f7fa 0%, #e4e8eb 100%);
-        border-radius: 12px;
-        padding: 20px;
-        border-top: 4px solid #667eea;
-      }
-
-      .criteria-card h4 {
-        color: #333;
-        margin-bottom: 10px;
-        font-size: 1.1rem;
-      }
-
-      .criteria-card p {
-        color: #666;
-        font-size: 0.95rem;
-      }
-
-      .code {
-        background: #f5f5f5;
-        padding: 2px 8px;
-        border-radius: 4px;
-        font-family: "Courier New", monospace;
-        font-size: 0.9rem;
-        border: 1px solid #ddd;
-      }
-
-      @media (max-width: 600px) {
-        h1 {
-          font-size: 1.5rem;
-        }
-        .theory-section {
-          padding: 20px 15px;
-        }
-        .time-grid {
-          grid-template-columns: 1fr;
-        }
-        .criteria-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-    </style>
-    <!-- Yandex.Metrika counter -->
+    <meta name="description" content="ОГЭ задание 14 — теория по функциям Excel. Важные аспекты выполнения задания 14 на ОГЭ по информатике." />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="../manifest.json" />
+    <link rel="canonical" href="https://nayanovaacademy.ru/office-web/excel/oge14-theory.html" />
+<!-- Yandex.Metrika counter -->
     <script type="text/javascript">
       (function (m, e, t, r, i, k, a) {
         m[i] =
@@ -383,11 +57,11 @@
     ></noscript>
     <!-- /Yandex.Metrika counter -->
   </head>
-  <body>
-    <div class="container">
-      <div class="nav-links">
-        <a href="index.html" class="back-link">← Электронные таблицы</a>
+  <body class="page-excel page-oge14-theory">
+    <div class="container" role="main">
+      <div class="nav-links" role="navigation" aria-label="Навигация по темам">
         <a href="../index.html" class="back-link">← На главную</a>
+        <a href="index.html" class="back-link">← К теории Excel</a>
       </div>
 
       <h1>📌 Важные аспекты — Электронные таблицы</h1>
@@ -610,11 +284,11 @@
           <li>Проверьте, что <strong>операторы сравнения</strong> правильные: =, <>, >, <, >=, <=</li>
         </ul>
 
-        <div class="formula-block" style="background: linear-gradient(145deg, #f5f7fa 0%, #e4e8eb 100%); border-radius: 12px; padding: 20px; margin: 15px 0; border-left: 4px solid #667eea;">
-          <div style="font-size: 1.1rem; font-weight: bold; color: #333; font-family: 'Courier New', monospace; text-align: center;">
+        <div class="formula-block" >
+          <div >
             =ЕСЛИ(И(C2="биология"; D2>500); 1; 0)
           </div>
-          <div style="font-size: 0.9rem; color: #666; margin-top: 10px; text-align: center;">
+          <div >
             ✅ Правильная формула: условие в скобках, точка с запятой, кавычки для текста
           </div>
         </div>
@@ -859,17 +533,19 @@
       </div>
     </div>
 
-    <!-- Быстрая навигация -->
-    <div class="quick-nav">
-      <button class="quick-nav-btn top" onclick="scrollToTop()" title="Наверх">
-        ↑
-      </button>
-    </div>
-
+    
+  
+    <script src="../assets/js/topic-nav.js"></script>
+    <script src="../assets/js/progress.js"></script>
+    <script src="../assets/js/analytics.js"></script>
     <script>
-      function scrollToTop() {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('../../sw.js');
       }
     </script>
-  </body>
+    <div class="quick-nav" role="complementary" aria-label="Быстрая навигация">
+      <button class="quick-nav-btn top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Наверх" aria-label="Наверх">↑</button>
+    </div>
+
+</body>
 </html>
