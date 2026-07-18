@@ -112,3 +112,7 @@ Copyright (c) 2026 Безуглов Сергей
 
 - GitHub: [@BesuglovS](https://github.com/BesuglovS)
 - Repository: [https://github.com/BesuglovS/office-web](https://github.com/BesuglovS/office-web)
+
+---
+
+Подробнее об архитектуре см. в [ARCHITECTURE.md](ARCHITECTURE.md).
