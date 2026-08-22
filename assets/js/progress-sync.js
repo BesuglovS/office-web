@@ -10,7 +10,8 @@
 
   var COURSE = 'office';
   var STORAGE_KEY = 'office-web-progress';
-  var TOPIC_COUNT_KEY = 'office-web-total-topics';
+  var TOTAL_FALLBACK = 21;
+  var totalTopicsPromise = null;
 
   function getLocalProgress() {
     try {
@@ -20,15 +21,30 @@
     }
   }
 
-  function getTotalTopics() {
-    try {
-      var v = parseInt(global.localStorage.getItem(TOPIC_COUNT_KEY), 10);
-      if (v > 0) return v;
-    } catch (e) { /* ignore */ }
-    return 21;
+  /**
+   * Актуальное число тем курса берётся из data/topics.json
+   * (сумма topics по всем разделам), fallback — 21.
+   */
+  function loadTotalTopics() {
+    if (totalTopicsPromise) return totalTopicsPromise;
+    totalTopicsPromise = global.fetch('data/topics.json')
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (data) {
+        if (!data || typeof data !== 'object') return TOTAL_FALLBACK;
+        var total = 0;
+        for (var section in data) {
+          if (!Object.prototype.hasOwnProperty.call(data, section)) continue;
+          var s = data[section];
+          if (!s || typeof s !== 'object') continue;
+          if (Array.isArray(s.topics)) total += s.topics.length;
+        }
+        return total > 0 ? total : TOTAL_FALLBACK;
+      })
+      .catch(function () { return TOTAL_FALLBACK; });
+    return totalTopicsPromise;
   }
 
-  function buildUpdates() {
+  function buildUpdates(total) {
     var data = getLocalProgress();
     var updates = [];
     var completed = 0;
@@ -57,17 +73,19 @@
     updates.push({
       module: '__summary__',
       completed: completed ? 1 : 0,
-      data: { completed: completed, total: getTotalTopics() }
+      data: { completed: completed, total: total }
     });
     return updates;
   }
 
   function sync() {
     if (!global.NayanovaProgress) return;
-    var updates = buildUpdates();
-    if (!updates.length) return;
-    NayanovaProgress.init({ course: COURSE });
-    NayanovaProgress.setBatch(updates);
+    loadTotalTopics().then(function (total) {
+      var updates = buildUpdates(total);
+      if (!updates.length) return;
+      NayanovaProgress.init({ course: COURSE });
+      NayanovaProgress.setBatch(updates);
+    });
   }
 
   if (document.readyState === 'loading') {
