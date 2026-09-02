@@ -43,8 +43,17 @@ server {
     }
 
     # 3. Кэширование статических файлов
-    # SW bez content-hash - ne keshirovat, inache brauzer ne uvidit obnovlenie sw.js
+    # Ecosystem-скрипты без content-hash - ne keshirovat, inache obnovleniya
+    # dohodyat do 30 dney (tracking-client, progress-client, progress-sync).
     location = /assets/js/tracking-client.js {
+        add_header Cache-Control "no-cache, must-revalidate";
+    }
+
+    location = /assets/js/progress-client.js {
+        add_header Cache-Control "no-cache, must-revalidate";
+    }
+
+    location = /assets/js/progress-sync.js {
         add_header Cache-Control "no-cache, must-revalidate";
     }
 

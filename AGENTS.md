@@ -10,7 +10,8 @@
 1. **Не перезапускать `update-html.cjs` / `update-remaining.cjs`** — это одноразовые разрушительные
    миграционные скрипты (июль 2026): срезают inline-`style`, добавляют meta/SW/скрипты. Не идемпотентны, без бэкапа.
 2. **`sw.js`**: при изменении статики **поднять `CACHE_NAME`** (сейчас `office-web-v2`) и `?v=` на
-   `style.css`, иначе браузеры отдают старый кэш. nginx шлёт `no-cache` только для `sw.js` и `tracking-client.js`.
+   `style.css`, иначе браузеры отдают старый кэш. nginx шлёт `no-cache` для `sw.js`, `tracking-client.js`,
+`progress-client.js` и `progress-sync.js` (все без content-hash).
 3. **Три системы прогресса должны быть согласованы**: `progress.js` (ключ `office-web-progress`;
    в ARCHITECTURE.md ошибочно указан `office-progress`), `progress-client.js` (`nayanova-progress`),
    `progress-sync.js` (читает `data/topics.json` для итога, fallback 21). Серверный синк — только на `index.html`.
